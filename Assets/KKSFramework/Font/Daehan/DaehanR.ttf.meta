@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 5b69f266fdba5184b835596595f70462
+timeCreated: 1504099351
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Daehan
+  fontNames:
+  - Daehan
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 2d34fbcd6f496c84bb39f26b76c9160b, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

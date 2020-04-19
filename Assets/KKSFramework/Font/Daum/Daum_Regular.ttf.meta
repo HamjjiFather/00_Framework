@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: ed5abcb156e8e4a40a0e382c9a8ef61e
+timeCreated: 1509354185
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Daum
+  fontNames:
+  - Daum
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 557b15d0b81552e40bf849ede97c97bf, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
