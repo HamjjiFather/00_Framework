@@ -1,2 +1,0 @@
-Key	Korean English
-row1   한국어   영어

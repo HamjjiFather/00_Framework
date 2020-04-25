@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using KKSFramework.Management;
-using KKSFramework.ResourcesLoad;
 using TMPro;
-using UniRx.Async;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,17 +19,6 @@ namespace KKSFramework.GameSystem.GlobalText
         /// 글로벌 텍스트를 표시하려는 컴포넌트가 TextMeshPro임.
         /// </summary>
         TMP,
-    }
-
-    public enum LanguageType
-    {
-        Kor,
-        Eng,
-        Jpn,
-        Chn,
-        Twn,
-        Ger,
-        FRA
     }
 
     [Serializable]
@@ -96,17 +83,12 @@ namespace KKSFramework.GameSystem.GlobalText
         /// <summary>
         /// 글로벌 텍스트 언어 타입.
         /// </summary>
-        private LanguageType _languageType;
+        private GlobalLanguageType _languageType;
 
         /// <summary>
         /// 글로벌 텍스트 언어 넘버.
         /// </summary>
         public int SelectedLanguage { get; private set; }
-
-        /// <summary>
-        /// 테이블에서 가져온 글로벌 텍스트.
-        /// </summary>
-        private readonly Dictionary<string, string[]> _globalTexts = new Dictionary<string, string[]> ();
 
         /// <summary>
         /// 글로벌 텍스트 번역을 사용하고 있는 텍스트 컴포넌트.
@@ -130,32 +112,12 @@ namespace KKSFramework.GameSystem.GlobalText
         #region Methods
 
         /// <summary>
-        /// TSV파일을 분석해 글로벌 텍스트 정보를 로드함.
-        /// </summary>
-        public async UniTask LoadGlobalText ()
-        {
-            var text = await ResourcesLoadHelper.GetResourcesAsync<TextAsset> (ResourceRoleType._Data,
-                ResourcesType.GlobalTextTSV, "GlobalText");
-            var readText = text.text.Split ('\n').GetEnumerator ();
-
-            readText.MoveNext ();
-            while (readText.MoveNext ())
-            {
-                var datas = readText.Current?.ToString ();
-                if (string.IsNullOrEmpty (datas)) continue;
-                var tempListValues = datas.Trim ('\r').Split ('\t').ToList ();
-                _globalTexts.Add (tempListValues.First (), tempListValues.Skip (1).ToArray ());
-            }
-        }
-
-
-        /// <summary>
         /// 언어가 변경됨.
         /// </summary>
         public void ChangeLanguage (int p_num)
         {
             SelectedLanguage = p_num;
-            _languageType = (LanguageType) SelectedLanguage;
+            _languageType = (GlobalLanguageType) SelectedLanguage;
             ChangeGlobalText ();
         }
 
@@ -168,7 +130,10 @@ namespace KKSFramework.GameSystem.GlobalText
             _globalTextComps.ForEach (x => x.ChangeText ());
             _translatedInfos.Foreach (x =>
             {
-                x.Value.text = string.Format (_globalTexts[x.Value.Key][(int) _languageType], x.Value.ToObjectArgs);
+                x.Value.text =
+                    string.Format (
+                        TableDataManager.Instance.GlobalTextDict[x.Value.Key].GlobalTexts[(int) _languageType],
+                        x.Value.ToObjectArgs);
             });
         }
 
@@ -200,7 +165,7 @@ namespace KKSFramework.GameSystem.GlobalText
                 return;
             }
 
-            if (!_globalTexts.ContainsKey (key)) return;
+            if (!TableDataManager.Instance.GlobalTextDict.ContainsKey (key)) return;
             if (!_translatedInfos.ContainsKey (textComp))
             {
                 _translatedInfos.Add (textComp, new TranslatedInfo ());
@@ -211,7 +176,8 @@ namespace KKSFramework.GameSystem.GlobalText
             translatedInfo.Key = key;
             translatedInfo.Args = Array.ConvertAll (args, x => x.ToString ());
             translatedInfo.SetTextComp (textComp);
-            translatedInfo.text = string.Format (_globalTexts[translatedInfo.Key][(int) _languageType],
+            translatedInfo.text = string.Format (
+                TableDataManager.Instance.GlobalTextDict[translatedInfo.Key].GlobalTexts[(int) _languageType],
                 translatedInfo.ToObjectArgs);
         }
 

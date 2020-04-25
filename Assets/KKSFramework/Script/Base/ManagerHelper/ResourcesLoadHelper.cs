@@ -13,7 +13,6 @@ namespace KKSFramework.ResourcesLoad
     public enum ResourcesType
     {
         TSV,
-        GlobalTextTSV,
         Json,
         
         Page,

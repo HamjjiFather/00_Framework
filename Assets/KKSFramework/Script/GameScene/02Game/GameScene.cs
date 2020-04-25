@@ -8,7 +8,7 @@ namespace KKSFramework
         protected override async UniTask InitializeAsync()
         {
             CreateCommonView ();
-            await NavigationHelper.OpenPage (NavigationViewState.HomePage, NavigationTriggerState.First, actionOnFirst:OpenQuitPopup);
+            // await NavigationHelper.OpenPage (NavigationViewState.HomePage, NavigationTriggerState.First, actionOnFirst:OpenQuitPopup);
             base.InitializeAsync ().Forget();
 
             void CreateCommonView ()

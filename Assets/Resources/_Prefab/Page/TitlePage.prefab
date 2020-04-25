@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71e2836dacc247a9b273ffadff2ddb68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  titleButton: {fileID: 0}
+  titleButton: {fileID: 8858299196205125400}
 --- !u!1001 &9213458692936160208
 PrefabInstance:
   m_ObjectHideFlags: 0

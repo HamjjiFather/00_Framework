@@ -12,7 +12,6 @@ public class ProjectInstall : MonoInstaller
     public override void InstallBindings ()
     {
         BindViewmodel ();
-        GlobalTextManager.Instance.LoadGlobalText ().Forget ();
     }
 
     private void BindViewmodel ()

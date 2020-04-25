@@ -7,7 +7,7 @@ namespace KKSFramework.GameSystem.GlobalText
         /// <summary>
         /// Change Language.
         /// </summary>
-        public static void ChangeLanguage (LanguageType languageType)
+        public static void ChangeLanguage (GlobalLanguageType languageType)
         {
             GlobalTextManager.Instance.ChangeLanguage ((int)languageType);
         }

@@ -1,3 +1,0 @@
-Id	Column1 Column2
-row1    a   b
-row2    c   d
