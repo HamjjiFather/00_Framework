@@ -9,20 +9,18 @@ namespace KKSFramework
     public static class Utility
     {
         /// <summary>
-        /// 게임씬에 들어와서 콘솔 창을 지움.
+        /// clear all of console log.
         /// </summary>
         public static void ClearConsole()
         {
             var logEntries = Type.GetType("UnityEditorInternal.LogEntries, UnityEditor.dll");
-            var mclear = logEntries.GetMethod("Clear", BindingFlags.Static | BindingFlags.Public);
-            mclear.Invoke(null, null);
+            var mclear = logEntries?.GetMethod("Clear", BindingFlags.Static | BindingFlags.Public);
+            mclear?.Invoke(null, null);
         }
 
         /// <summary>
         /// Type에 해당하는 enum을 랜덤으로 1개 리턴함.
         /// </summary>
-        /// <param name="p_type"></param>
-        /// <returns></returns>
         public static Enum ReturnRandomEnum(Type p_type)
         {
             var temp_array = Enum.GetValues(p_type);
@@ -32,13 +30,10 @@ namespace KKSFramework
         /// <summary>
         /// 문자열과 같은 이름을 가진 T 타입에 해당하는 enum 타입을 리턴.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="p_code"></param>
-        /// <returns></returns>
-        public static T ReturnEnumTypeValue<T>(string p_code)
+        public static T ReturnEnumTypeValue<T>(string enumName) where T : Enum
         {
-            var t = Enum.GetValues(typeof(T)).Cast<T>().ToList().Find(x => x.ToString().Equals(p_code));
-            return t != null ? t : default;
+            var @enum = Enum.GetValues(typeof(T)).Cast<T>().ToList().Find(x => x.ToString().Equals(enumName));
+            return @enum != null ? @enum : default;
         }
 
         /// <summary>
@@ -71,5 +66,76 @@ namespace KKSFramework
 
             return temp_value;
         }
+
+
+        #region Compare
+
+        public static bool Or<T> (T target, T arg1, T arg2) where T : IComparable
+        {
+            return target.CompareTo (arg1) == 0
+                   || target.CompareTo (arg2) == 0;
+        }
+
+
+        public static bool Or<T> (T target, T arg1, T arg2, T arg3) where T : IComparable
+        {
+            return target.CompareTo (arg1) == 0
+                   || target.CompareTo (arg2) == 0
+                   || target.CompareTo (arg3) == 0;
+        }
+
+        
+        public static bool Or<T> (T target, T arg1, T arg2, T arg3, T arg4) where T : IComparable
+        {
+            return target.CompareTo (arg1) == 0
+                   || target.CompareTo (arg2) == 0
+                   || target.CompareTo (arg3) == 0
+                   || target.CompareTo (arg4) == 0;
+        }
+        
+        public static bool Or<T> (T target, T arg1, T arg2, T arg3, T arg4, T arg5) where T : IComparable
+        {
+            return target.CompareTo (arg1) == 0
+                   || target.CompareTo (arg2) == 0
+                   || target.CompareTo (arg3) == 0
+                   || target.CompareTo (arg4) == 0
+                   || target.CompareTo (arg5) == 0;
+        }
+
+
+        public static bool And<T> (T target, T arg1, T arg2) where T : IComparable
+        {
+            return target.CompareTo (arg1) == 0
+                   && target.CompareTo (arg2) == 0;
+        }
+
+
+        public static bool And<T> (T target, T arg1, T arg2, T arg3) where T : IComparable
+        {
+            return target.CompareTo (arg1) == 0
+                   && target.CompareTo (arg2) == 0
+                   && target.CompareTo (arg3) == 0;
+        }
+
+        
+        public static bool And<T> (T target, T arg1, T arg2, T arg3, T arg4) where T : IComparable
+        {
+            return target.CompareTo (arg1) == 0
+                   && target.CompareTo (arg2) == 0
+                   && target.CompareTo (arg3) == 0
+                   && target.CompareTo (arg4) == 0;
+        }
+        
+        public static bool And<T> (T target, T arg1, T arg2, T arg3, T arg4, T arg5) where T : IComparable
+        {
+            return target.CompareTo (arg1) == 0
+                   && target.CompareTo (arg2) == 0
+                   && target.CompareTo (arg3) == 0
+                   && target.CompareTo (arg4) == 0
+                   && target.CompareTo (arg5) == 0;
+        }
+        
+
+        #endregion
     }
 }
