@@ -7,6 +7,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using static System.Guid;
+using Random = UnityEngine.Random;
 
 /// <summary>
 /// c#, unity3D base extended functions.
@@ -125,6 +126,7 @@ public static class BaseExtension
         return new Vector2 (value, vector2.y);
     }
 
+    
     /// <summary>
     /// change Y axis value only.
     /// </summary>
@@ -132,6 +134,7 @@ public static class BaseExtension
     {
         return new Vector2 (vector2.x, value);
     }
+    
 
     /// <summary>
     /// change Vector3 to only one value.
@@ -165,6 +168,7 @@ public static class BaseExtension
     {
         return new Vector3 (vector3.x, vector3.y, value);
     }
+
 
     #endregion
 
@@ -336,6 +340,14 @@ public static class BaseExtension
     {
         transform.localPosition = transform.localPosition.X (pos.x).Y (pos.y);
         return transform;
+    }
+
+
+    public static void MoveTowards (this Transform transform, Vector2 currentPos, Vector2 targetPos, float maxDistanceDelta)
+    {
+        var towardPos = Vector2.MoveTowards (currentPos, targetPos, maxDistanceDelta);
+        transform.SetPositionXy (towardPos);
+        transform.SetLocalPositionZ (0);
     }
 
 
@@ -542,6 +554,106 @@ public static class BaseExtension
             index++;
         }
     }
+    
+    
+    public static TSource RandomSource<TSource> (this IEnumerable<TSource> source)
+    {
+        if (source == null)
+            throw new ArgumentException (nameof (source));
+
+        var sourceArray = source.ToArray ();
+        var randValue = Random.Range (0, sourceArray.Length);
+        var result = sourceArray[randValue];
+        return result;
+    }
+
+
+    public static TSource RandomSource<TSource> (this IEnumerable<TSource> source, Func<TSource, bool> selector)
+    {
+        return source.Where (selector).RandomSource ();
+    }
+
+
+    public static int RandomIndex<TSource> (this IEnumerable<TSource> source)
+    {
+        if (source == null)
+            throw new ArgumentException (nameof (source));
+
+        var random = new System.Random ();
+        var sourceArray = source.ToArray ();
+        return random.Next (sourceArray.Length);
+    }
+
+
+    public static TSource Overlap<TSource> (this IEnumerable<TSource> source, IEnumerable<TSource> target)
+    {
+        if(source == null || target == null || !source.Any() || !target.Any())
+            throw new ArgumentException (nameof (source), nameof(target));
+
+        using (var enumerator = target.GetEnumerator ())
+        {
+            while (enumerator.MoveNext ())
+            {
+                var cur = enumerator.Current;
+
+                if (source.Contains (cur))
+                {
+                    return cur;
+                }
+
+                enumerator.MoveNext ();
+            }
+        }
+
+        return default;
+    }
+
+
+    public static bool ContainIndex<TSource> (this IEnumerable<TSource> source, int index)
+    {
+        return Enumerable.Range (0, source.Count ()).Contains (index);
+    }
+    
+    
+    public static int RandomIndex<TSource> (this IEnumerable<TSource> source, Func<TSource, bool> selector)
+    {
+        if (source == null)
+            throw new ArgumentException (nameof (source));
+
+        var random = new System.Random ();
+        var sourceArray = source.ToArray ();
+        return random.Next (sourceArray.Length);
+    }
+    
+
+    public static TSource MaxSource<TSource> (this IEnumerable<TSource> source, Func<TSource, IComparable> selector)
+    {
+        if (source == null)
+            throw new ArgumentException (nameof (source));
+        if (selector == null)
+            throw new ArgumentException (nameof (selector));
+        TSource collection;
+        var comparer = Comparer<IComparable>.Default;
+
+        using (var enumerator = source.GetEnumerator ())
+        {
+            if (!enumerator.MoveNext ())
+                throw new NullReferenceException ();
+            var num1 = selector (enumerator.Current);
+            collection = enumerator.Current;
+
+            while (enumerator.MoveNext ())
+            {
+                var num2 = selector (enumerator.Current);
+                if (comparer.Compare (num1, num2) > 0) continue;
+                num1 = num2;
+                collection = enumerator.Current;
+            }
+        }
+
+        return collection;
+    }
+    
     
     
     /// <summary>

@@ -59,7 +59,7 @@ namespace KKSFramework.UI
                         x.SetOnlyColor(_targetGraphic.color);
                         break;
                     case StatusColorOption.AlphaOnly:
-                        x.SetAlphaColor(_targetGraphic.color.a);
+                        x.SetAlphaColor(_targetGraphic.color);
                         break;
                 }
             }));
