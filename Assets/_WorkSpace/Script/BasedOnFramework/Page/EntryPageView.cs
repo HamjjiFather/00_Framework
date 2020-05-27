@@ -3,7 +3,7 @@ using KKSFramework.Navigation;
 using KKSFramework.SceneLoad;
 using UnityEngine;
 
-namespace KKSFramework
+namespace KKSFramework.InGame
 {
     public class EntryPageView : PageViewBase
     {

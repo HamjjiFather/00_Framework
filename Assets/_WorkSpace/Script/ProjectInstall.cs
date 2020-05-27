@@ -7,7 +7,7 @@ using Zenject;
 
 public class ProjectInstall : MonoInstaller
 {
-    private static readonly List<Type> ViewModelTypes = new List<Type> ();
+    private static readonly List<Type> ViewmodelTypes = new List<Type> ();
 
     public override void InstallBindings ()
     {
@@ -16,12 +16,13 @@ public class ProjectInstall : MonoInstaller
 
     private void BindViewmodel ()
     {
-        ViewModelTypes.ForEach (type => { Container.Bind (type).AsSingle (); });
+        // ViewModelTypes.Add (typeof(Any Viewmodel Types));
+        ViewmodelTypes.ForEach (type => { Container.Bind (type).AsSingle (); });
     }
 
     public static void InstallViewmodel ()
     {
-        ViewModelTypes.ForEach (type =>
+        ViewmodelTypes.ForEach (type =>
         {
             var viewmodel = (ViewModelBase) ProjectContext.Instance.Container.Resolve (type);
             viewmodel.Initialize ();

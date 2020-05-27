@@ -1,7 +1,7 @@
 ﻿using KKSFramework.Navigation;
 using UniRx.Async;
 
-namespace KKSFramework
+namespace KKSFramework.InGame
 {
     public class GameScene : SceneController
     {
@@ -18,7 +18,7 @@ namespace KKSFramework
             
             void OpenQuitPopup ()
             {
-                NavigationHelper.OpenPopup (NavigationViewState.QuitPopup).Forget();
+                NavigationHelper.OpenPopup (NavigationViewType.QuitPopup).Forget();
             }
         }
     }

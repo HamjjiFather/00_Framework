@@ -1,7 +1,7 @@
 ﻿using KKSFramework.SceneLoad;
 using UniRx.Async;
 
-namespace KKSFramework
+namespace KKSFramework.InGame
 {
     public class EntryScene : SceneController
     {

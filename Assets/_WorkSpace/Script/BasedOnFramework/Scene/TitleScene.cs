@@ -1,6 +1,6 @@
 ﻿using UniRx.Async;
 
-namespace KKSFramework.Navigation
+namespace KKSFramework.InGame
 {
     public class TitleScene : SceneController
     {
@@ -10,7 +10,7 @@ namespace KKSFramework.Navigation
         protected override UniTask InitializeAsync ()
         {
             ProjectInstall.InstallViewmodel ();
-            titlePageView.Push ().Forget();
+            titlePageView.Push ().Forget ();
             return base.InitializeAsync ();
         }
     }

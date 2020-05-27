@@ -1,8 +1,9 @@
-﻿using KKSFramework.SceneLoad;
+﻿using KKSFramework.Navigation;
+using KKSFramework.SceneLoad;
 using UniRx.Async;
 using UnityEngine.UI;
 
-namespace KKSFramework.Navigation
+namespace KKSFramework.InGame
 {
     public class TitlePageView : PageViewBase
     {

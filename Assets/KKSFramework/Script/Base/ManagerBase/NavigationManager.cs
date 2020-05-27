@@ -74,8 +74,8 @@ namespace KKSFramework.Navigation
         /// <summary>
         /// 현재 열려있는 페이지 타입.
         /// </summary>
-        public readonly ReactiveProperty<NavigationViewState> LastPageType =
-            new ReactiveProperty<NavigationViewState> (NavigationViewState.EntryPage);
+        public readonly ReactiveProperty<NavigationViewType> LastPageType =
+            new ReactiveProperty<NavigationViewType> (NavigationViewType.EntryPage);
 
         /// <summary>
         /// 메인 UI 카메라.
@@ -205,7 +205,7 @@ namespace KKSFramework.Navigation
             }
 
             PageCount.Value = _pageInfoStack.Count;
-            LastPageType.Value = (NavigationViewState) Enum.Parse (typeof (NavigationViewState),
+            LastPageType.Value = (NavigationViewType) Enum.Parse (typeof (NavigationViewType),
                 _pageInfoStack.First ().ViewTypeName);
 
             await HideTransitionViewAsync ();
@@ -281,7 +281,7 @@ namespace KKSFramework.Navigation
                     }
 
                     PageCount.Value = _pageInfoStack.Count;
-                    LastPageType.Value = (NavigationViewState) Enum.Parse (typeof (NavigationViewState),
+                    LastPageType.Value = (NavigationViewType) Enum.Parse (typeof (NavigationViewType),
                         navigationInfo.ViewTypeName);
 
                     await HideTransitionViewAsync();
