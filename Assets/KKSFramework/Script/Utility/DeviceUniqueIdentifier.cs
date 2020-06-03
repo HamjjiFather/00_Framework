@@ -67,7 +67,6 @@ namespace KKSFramework
             }
             catch (AndroidJavaException)
             {
-                Log.Warning(nameof(DeviceUniqueIdentifier), "No android.permission.ACCESS_WIFI_STATE.");
                 password = "";
             }
 

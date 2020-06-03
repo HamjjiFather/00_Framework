@@ -74,7 +74,7 @@ namespace KKSFramework.LocalData
         /// </summary>
         public static void ToJsonData<T>(this Bundle bundle) where T : Bundle
         {
-            var filePath = $"{Application.persistentDataPath}/{typeof(T).Name}.json";
+            var filePath = $"{Application.persistentDataPath}/{bundle.GetType().Name}.json";
             File.WriteAllText(filePath, JsonUtility.ToJson(bundle));
         }
     }

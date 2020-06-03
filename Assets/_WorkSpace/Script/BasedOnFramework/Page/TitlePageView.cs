@@ -40,6 +40,7 @@ namespace KKSFramework.InGame
 
         private void SetViewmodel ()
         {
+            // TODO - Call for some viewmodel InitTableData, InitLocalData function.
         }
 
         private void ClickTitle ()

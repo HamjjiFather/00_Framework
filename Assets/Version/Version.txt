@@ -292,8 +292,8 @@
 	 > OnHid -> 뷰가 화면에 사라지고 나서 처리.
      
      - 페이지(A) 출현await A Push -> A Show -> A OnShowed
-     - 페이지(A) > 페이지(B) 전환await A BackGround -> await A Hide -> A OnHid -> await B Push -> await B Show -> B OnShowed
-     - 페이지(B) > 페이지(A) 복귀await B Pop -> await B Hide -> A Foreground -> A Show -> A OnShowed
+     - 페이지(A) > 페이지(B) 전환 await A BackGround -> await A Hide -> A OnHid -> await B Push -> await B Show -> B OnShowed
+     - 페이지(B) > 페이지(A) 복귀 await B Pop -> await B Hide -> A Foreground -> A Show -> A OnShowed
      
      <2019.11>
      [Base]
@@ -311,15 +311,4 @@
      > 페이지, 팝업 Show, Hide 이펙트 추가.
      > 페이지, 팝업 호출 구조 수정.
 
-	 
-	 
-	 
-	 
-	 //TODO: UNIRX로 변경할 수 있는 부분들 변경.
-	 //TODO: View Navigation구조 변경.
-	 //TODO: Linq사용.
-	  
-	 
-	 
-	 
-	 
+Version 1.0.0
