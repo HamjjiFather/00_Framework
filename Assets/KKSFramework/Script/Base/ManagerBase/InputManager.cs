@@ -58,7 +58,7 @@ namespace KKSFramework.Event
         /// </summary>
         public bool GetDown ()
         {
-            bool isDown;
+            var isDown = false;
 
 #if UNITY_EDITOR || UNITY_FACEBOOK || UNITY_STANDALONE
             isDown = Input.GetMouseButtonDown (0);
@@ -79,7 +79,7 @@ namespace KKSFramework.Event
         /// <returns></returns>
         public bool GetUp ()
         {
-            bool isUp;
+            var isUp = false;
 
 #if UNITY_EDITOR || UNITY_FACEBOOK || UNITY_STANDALONE
             isUp = Input.GetMouseButtonUp (0);

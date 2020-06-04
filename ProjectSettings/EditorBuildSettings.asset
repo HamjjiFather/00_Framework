@@ -5,16 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scene/00Entry.unity
     guid: 1fac761ce93f8a741b0005a007f46c97
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scene/01Title.unity
     guid: 73b935e6f1f29ff468c7259d8636df59
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scene/02Game.unity
     guid: 5e927e4e10fabe048a1765b32b25624d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scene/Bootstrap.unity
     guid: fb92d4a6b5ab01645a8d41e362a6ef92
+  - enabled: 1
+    path: Assets/KKSFramework/PlatformServiceSample/SampleScene.unity
+    guid: f43c50d5e935d75459043e5de4ca4d4c
   m_configObjects: {}
