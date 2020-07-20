@@ -1,7 +1,6 @@
 /// <summary>
 /// MonoBehaviour를 상속하지 않은 일반 클래스의 싱글톤 디자인.
 /// </summary>
-/// <typeparam name="T"></typeparam>
 public class Singleton<T> where T : new()
 {
     private static readonly object _lock = new object();

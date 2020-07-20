@@ -24,6 +24,7 @@ namespace KKSFramework.InGame
         {
             titleButton.onClick.AddListener (ClickTitle);
         }
+        
 
         protected override async UniTask OnShow ()
         {
@@ -31,17 +32,13 @@ namespace KKSFramework.InGame
             await base.OnShow ();
         }
 
+        
         protected override void Showed ()
         {
             base.Showed ();
-            SetViewmodel ();
             _isLoaded = true;
         }
 
-        private void SetViewmodel ()
-        {
-            // TODO - Call for some viewmodel InitTableData, InitLocalData function.
-        }
 
         private void ClickTitle ()
         {

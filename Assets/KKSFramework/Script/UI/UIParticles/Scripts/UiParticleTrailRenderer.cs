@@ -5,7 +5,6 @@ namespace UiParticles
 {
     public class UiParticleTrailRenderer : MaskableGraphic
     {
-        
         /// <summary>
         /// ParticleSystem used for generate particles
         /// </summary>
@@ -31,8 +30,8 @@ namespace UiParticles
         }
         
         private UiParticles m_partenParticlesModule;
-        
-        private void Start()
+
+        protected override void Start()
         {
             var parent = transform.parent;
             if (parent != null)
@@ -59,8 +58,5 @@ namespace UiParticles
                 m_Material = ParentParticleModule.GetComponent<ParticleSystemRenderer>().trailMaterial;
             }
         }
-        
-        
-        
     }
 }

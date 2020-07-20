@@ -23,9 +23,6 @@ namespace KKSFramework.UI
         #endregion
 
 
-        // 모든 베이스 클래스, 베이스 클래스를 상속한 클래스에서 사용.
-
-
         #region Fields & Property
 
         /// <summary>

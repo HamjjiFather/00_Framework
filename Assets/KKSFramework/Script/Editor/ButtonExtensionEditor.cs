@@ -14,7 +14,7 @@ namespace KKSFramework.Editor
     [CanEditMultipleObjects]
     public class ButtonExtensionEditor : ButtonEditor
     {
-        // 모든 베이스 클래스, 베이스 클래스를 상속한 클래스에서 사용.
+        
         //[Header("[Editor_UIToggleBase]"), Space(5)]
 
         #region Fields & Property

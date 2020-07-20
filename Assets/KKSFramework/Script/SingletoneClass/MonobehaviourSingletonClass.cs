@@ -3,7 +3,6 @@
 /// <summary>
 /// MonoBehaviour를 상속한 클래스의 싱글톤.
 /// </summary>
-/// <typeparam name="T"></typeparam>
 public class MonobehaviourSingletonClass<T> : MonoBehaviour where T : MonobehaviourSingletonClass<T>
 {
     private static T _instance;

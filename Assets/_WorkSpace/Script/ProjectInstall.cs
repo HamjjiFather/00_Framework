@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using KKSFramework.DesignPattern;
-using KKSFramework.GameSystem.GlobalText;
+using KKSFramework.GlobalText;
 using UniRx.Async;
 using Zenject;
 
@@ -20,12 +20,32 @@ public class ProjectInstall : MonoInstaller
         ViewmodelTypes.ForEach (type => { Container.Bind (type).AsSingle (); });
     }
 
-    public static void InstallViewmodel ()
+    public static void InitViewmodel ()
     {
         ViewmodelTypes.ForEach (type =>
         {
             var viewmodel = (ViewModelBase) ProjectContext.Instance.Container.Resolve (type);
             viewmodel.Initialize ();
+        });
+    }
+    
+    
+    public static void InitLocalDataViewmodel ()
+    {
+        ViewmodelTypes.ForEach (type =>
+        {
+            var viewmodel = (ViewModelBase) ProjectContext.Instance.Container.Resolve (type);
+            viewmodel.InitAfterLoadLocalData ();
+        });
+    }
+    
+    
+    public static void InitTableDataViewmodel ()
+    {
+        ViewmodelTypes.ForEach (type =>
+        {
+            var viewmodel = (ViewModelBase) ProjectContext.Instance.Container.Resolve (type);
+            viewmodel.InitAfterLoadTableData ();
         });
     }
 }

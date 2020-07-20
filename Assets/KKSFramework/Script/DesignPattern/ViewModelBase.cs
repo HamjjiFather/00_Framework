@@ -7,13 +7,21 @@ namespace KKSFramework.DesignPattern
 {
     public abstract class ViewModelBase<T> : ViewModelBase where T : ModelBase
     {
-        protected T ModelBase;
-        protected readonly ReactiveCommand<T> TestReactiveCommand = new ReactiveCommand<T> ();
+        protected abstract T ModelBase { get; set; }
+        protected readonly ReactiveCommand<T> ModelChangedCommand = new ReactiveCommand<T> ();
+        
+        
+        public virtual void RegistReactiveCommand (Action<T> subscribeAction)
+        {
+            ModelChangedCommand.RegistModelReactiveCommand (subscribeAction);
+            ModelChangedCommand.Execute (ModelBase);
+        }
+        
         
         public virtual void RegistReactiveCommand (Action<T> subscribeAction, MonoBehaviour target)
         {
-            TestReactiveCommand.RegistModelReactiveCommand (subscribeAction, target);
-            TestReactiveCommand.Execute (ModelBase);
+            ModelChangedCommand.RegistModelReactiveCommand (subscribeAction, target);
+            ModelChangedCommand.Execute (ModelBase);
         }
     }
     
@@ -28,11 +36,11 @@ namespace KKSFramework.DesignPattern
         /// <summary>
         /// 테이블 데이터를 로드하고 뷰모델 세팅.
         /// </summary>
-        public virtual void InitTableData() {}
+        public virtual void InitAfterLoadTableData() {}
         
         /// <summary>
         /// 로컬 데이터를 로드하고 뷰모델 세팅.
         /// </summary>
-        public virtual void InitLocalData() {}
+        public virtual void InitAfterLoadLocalData() {}
     }
 }

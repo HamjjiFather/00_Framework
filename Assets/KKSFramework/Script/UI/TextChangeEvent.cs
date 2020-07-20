@@ -9,9 +9,6 @@ namespace KKSFramework.UI
     [RequireComponent(typeof(Text))]
     public class TextChangeEvent : CachedComponent
     {
-        // 모든 베이스 클래스, 베이스 클래스를 상속한 클래스에서 사용.
-        //[Header("[TextChangeEvent]"), Space(5)]
-
         #region Constructor
 
         #endregion

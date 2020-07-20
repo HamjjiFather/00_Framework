@@ -1,4 +1,5 @@
 ﻿using KKSFramework.Navigation;
+using KKSFramework.SceneLoad;
 using UniRx.Async;
 
 namespace KKSFramework.InGame
@@ -7,6 +8,11 @@ namespace KKSFramework.InGame
     {
         protected override async UniTask InitializeAsync()
         {
+            ProjectInstall.InitViewmodel ();
+            await TableDataManager.Instance.LoadTableDatas ();
+            ProjectInstall.InitLocalDataViewmodel ();
+            ProjectInstall.InitTableDataViewmodel ();
+            
             CreateCommonView ();
             // await NavigationHelper.OpenPage (NavigationViewState.HomePage, NavigationTriggerState.First, actionOnFirst:OpenQuitPopup);
             base.InitializeAsync ().Forget();
@@ -16,10 +22,10 @@ namespace KKSFramework.InGame
                 
             }
             
-            void OpenQuitPopup ()
-            {
-                NavigationHelper.OpenPopup (NavigationViewType.QuitPopup).Forget();
-            }
+            // void OpenQuitPopup ()
+            // {
+            //     NavigationHelper.OpenPopup (NavigationViewType.QuitPopup).Forget();
+            // }
         }
     }
 }

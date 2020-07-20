@@ -1,4 +1,5 @@
-﻿using UniRx.Async;
+﻿using KKSFramework.SceneLoad;
+using UniRx.Async;
 
 namespace KKSFramework.InGame
 {
@@ -9,7 +10,6 @@ namespace KKSFramework.InGame
 
         protected override UniTask InitializeAsync ()
         {
-            ProjectInstall.InstallViewmodel ();
             titlePageView.Push ().Forget ();
             return base.InitializeAsync ();
         }
