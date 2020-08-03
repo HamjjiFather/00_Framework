@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using KKSFramework.DesignPattern;
-using KKSFramework.GlobalText;
-using UniRx.Async;
 using Zenject;
 
 public class ProjectInstall : MonoInstaller

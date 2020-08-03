@@ -2,7 +2,7 @@
 
 namespace KKSFramework.InGame
 {
-    public class GamePageView : PageViewBase
+    public class HomePageView : PageViewBase
     {
         // TODO - Add some functions by game style.
     }
