@@ -1,0 +1,16 @@
+{
+  "name": "com.rhkdtjq0390.frameworkKKS",
+  "version": "1.0.1",
+  "displayName": "Base framework",
+  "description": "KKS's base framework",
+  "unity": "2020.1",
+  "unityRelease": "0f1",
+  "dependencies": {
+    "com.unity.some-package": "1.0.0",
+    "com.unity.other-package": "2.0.0"
+ },
+  "author": {
+    "name": "rhkdtjq0390",
+    "email": "rhkdtjq0390@naver.com"
+  }
+}
