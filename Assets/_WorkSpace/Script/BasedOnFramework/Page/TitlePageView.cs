@@ -1,6 +1,7 @@
-﻿using KKSFramework.Navigation;
+﻿using Cysharp.Threading.Tasks;
+using KKSFramework.Navigation;
 using KKSFramework.SceneLoad;
-using UniRx.Async;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace KKSFramework.InGame
@@ -23,13 +24,6 @@ namespace KKSFramework.InGame
         private void Awake ()
         {
             titleButton.onClick.AddListener (ClickTitle);
-        }
-        
-
-        protected override async UniTask OnShow ()
-        {
-            await TableDataManager.Instance.LoadTableDatas ();
-            await base.OnShow ();
         }
 
         

@@ -1,5 +1,7 @@
-﻿using KKSFramework.SceneLoad;
-using UniRx.Async;
+﻿using Cysharp.Threading.Tasks;
+using KKSFramework.Localization;
+using KKSFramework.SceneLoad;
+
 
 namespace KKSFramework.InGame
 {
@@ -8,11 +10,12 @@ namespace KKSFramework.InGame
         public EntryPageView entryPageView;
 
 
-        protected override UniTask InitializeAsync ()
+        protected override async UniTask InitializeAsync ()
         {
+            await LocalizationTextManager.Instance.LoadGlobalTextData ();
             SceneLoadManager.Instance.InitManager ();
             entryPageView.Push ().Forget ();
-            return UniTask.CompletedTask;
+            await UniTask.CompletedTask;
         }
     }
 }

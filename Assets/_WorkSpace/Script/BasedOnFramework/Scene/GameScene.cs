@@ -1,6 +1,6 @@
-﻿using KKSFramework.Navigation;
+﻿using Cysharp.Threading.Tasks;
 using KKSFramework.SceneLoad;
-using UniRx.Async;
+
 
 namespace KKSFramework.InGame
 {

@@ -3,16 +3,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using KKSFramework.TableData;
-using UniRx.Async;
+using Cysharp.Threading.Tasks;
 
 public class TableDataManager : Singleton<TableDataManager>
 {
-	public Dictionary<string, GlobalText> GlobalTextDict = new Dictionary<string, GlobalText> ();
+    public readonly Dictionary<int, TableDataBase> TotalDataDict = new Dictionary<int, TableDataBase> ();
+
+	public Dictionary<int, Template> TemplateDict = new Dictionary<int, Template> ();
 
 
     public async UniTask LoadTableDatas ()
     {
-		GlobalTextDict = (await ReadCSVData.Instance.LoadCSVData<GlobalText> (nameof (GlobalText))).ToDictionary (x => x.Id, x => x);
+		TemplateDict = (await ReadCSVData.Instance.LoadCSVData<Template> ("TableData", nameof (Template))).ToDictionary (x => x.Id, x => x);
+
+
 
     }
 }

@@ -1,17 +1,19 @@
-﻿using KKSFramework.SceneLoad;
-using UniRx.Async;
+﻿using Cysharp.Threading.Tasks;
+using KKSFramework.LocalData;
+using KKSFramework.Navigation;
+using KKSFramework.SceneLoad;
+
 
 namespace KKSFramework.InGame
 {
     public class TitleScene : SceneController
     {
-        public TitlePageView titlePageView;
-
-
-        protected override UniTask InitializeAsync ()
+        protected override async UniTask InitializeAsync ()
         {
-            titlePageView.Push ().Forget ();
-            return base.InitializeAsync ();
+            LocalDataHelper.LoadAllGameData ();
+            LocalDataManager.Instance.SetSaveAction (LocalDataHelper.SaveAllGameData);
+            await NavigationHelper.OpenPage (NavigationViewType.TitlePage, NavigationTriggerState.First);
+            await base.InitializeAsync ();
         }
     }
 }
