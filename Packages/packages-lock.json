@@ -29,7 +29,7 @@
       "hash": "284d5c50d3f1ddd9fa7df3d382ea904732a9c2ff"
     },
     "com.rhkdtjq0390.baseframe": {
-      "version": "https://github.com/HamjjiFather/00_Unity_FrameworkCore.git?path=Assets/Core",
+      "version": "ssh://git@github.com/HamjjiFather/00_Unity_FrameworkCore.git?path=Assets/Core",
       "depth": 0,
       "source": "git",
       "dependencies": {},
