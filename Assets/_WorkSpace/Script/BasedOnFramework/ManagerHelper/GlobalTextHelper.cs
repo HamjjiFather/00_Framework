@@ -15,17 +15,11 @@ namespace KKSFramework.Localization
 
         public static string GetTranslatedString (string key)
         {
-            return LocalizationTextManager.Instance.GetTranslatedString (key, LocalizationTextManager.Instance.LanguageType);
+            return string.Empty;
+            // LocalizationTextManager.Instance.
+            // return LocalizationTextManager.Instance.GetTranslatedString (key, LocalizationTextManager.Instance.LanguageType);
         }
-
-
-        /// <summary>
-        /// Translate Text Component. 
-        /// </summary>
-        public static void GetTranslatedString (this Text textComp, string key, params object[] args)
-        {
-            LocalizationTextManager.Instance.RegistTranslate (TargetGlobalTextCompType.UIText, key, textComp, args);
-        }
+        
 
         // If use TMP, Should disabled this method summary.
         // public static void GetTranslatedString (this TextMeshPro textComp, string key, params object[] args)
